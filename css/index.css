@@ -1,0 +1,223 @@
+main {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#main-wrapper {
+  width: 80%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-item-align: center;
+      align-self: center;
+}
+
+#main_block {
+  width: 75%;
+}
+
+#main_block p {
+  text-align: center;
+}
+#main_block h2 {
+  text-align: center;
+}
+#main_block section {
+  width: 100%;
+  min-height: 117px;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px;
+  background-image: url("https://img.freepik.com/free-vector/hand-painted-watercolor-pastel-sky-background_23-2148902771.jpg?w=2000");
+  overflow: hidden;
+}
+
+#INT_Block section {
+  width: 100%;
+  min-height: 100px;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px;
+  background-image: url("https://img.freepik.com/free-vector/hand-painted-watercolor-pastel-sky-background_23-2148907305.jpg?w=2000");
+  overflow: hidden;
+}
+
+
+#H_Block {
+  width: 75%;
+  
+}
+
+#H_Block {
+  width: 100%;
+  height: 90%;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px;
+  background-image: url("https://img.freepik.com/free-vector/white-abstract-background_23-2148810113.jpg?w=2000");
+  overflow: hidden;
+  
+  text-align: justify;
+}
+
+#H_Block #my_logo {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 10px;
+  
+}
+
+#H_Block #tntu_text {
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  margin: 10px;
+  overflow: hidden;
+  border-radius: 10px;
+  text-align:left;
+}
+
+#H_Block #tntu_logo {
+  width: 100%;
+  height: 100%;
+  padding: 0px;
+  margin: 0px;
+  overflow: hidden;
+  border-radius: 20px;
+
+}
+
+
+
+
+
+
+#H_Block #bottom_tntutext_2logos {
+  width: 95%;
+  height: 50%;
+  padding: 10px;
+  margin: 10px;
+  overflow: hidden;
+  border-radius: 10px;
+
+}
+
+
+
+#add_side_block {
+  width: 25%;
+  padding: 130px 0 420px 60px;
+}
+
+#add_side_block #inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 93%;
+  height: 100%;
+  background-image: url("https://chicagougcc.org/images/sUPPORT_UKR.jpg");
+}
+
+#add_bottom_block {
+  width: 85%;
+  height: 100px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#add_bottom_block #add_block1 {
+  width: 25%;
+  height: 100%;
+  padding: 15px;
+  margin: 0 150px;
+  overflow: hidden;
+  background-color: #f8f9fc;
+  border-radius: 10px;
+}
+
+
+#add_bottom_block #add_block2 {
+  width: 20%;
+  height: 100%;
+  padding: 0px;
+  margin: 0 200px;
+  overflow: hidden;
+  background-color: #f8f9fc;
+  border-radius: 10px;
+}
+
+#add_bottom_block #add_block3 {
+  width: 25%;
+  height: 100%;
+  padding: 20px;
+  margin: 0 150px;
+  overflow: hidden;
+  background-color: #f8f9fc;
+  border-radius: 10px;
+}
+
+#hobby_wrapper {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  
+}
+
+#hobby_wrapper .hobby {
+  width: 20%;
+  background-color: #d0e6e5;
+  border-radius: 10px;
+  padding: 15px;
+}
+
+#hobby_wrapper .hobby .C_Imag{
+  width: 100%;
+  height: 85%;
+  padding: 10px;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+
+#hobby_wrapper .hobby h3 {
+  text-align: center;
+}
+
+#items_footer {
+  width: 100%;
+  height: 60%;
+  border-radius: 10px;
+  padding: 0px;
+  margin: 0px;
+  background-image: url("https://img.freepik.com/free-vector/white-abstract-background_23-2148810113.jpg?w=2000");
+  overflow: hidden;
+  opacity: 0.9; 
+  text-align: justify;
+
+}
+#items_footer p {
+  text-align: center;
+}
+

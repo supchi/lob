@@ -1,0 +1,62 @@
+#title {
+  width: 100%;
+  text-align: center;
+  padding: 25px 0 20px 0;
+}
+
+#title h1 {
+  margin: 0;
+}
+
+#hobby_wrapper {
+  width: 100%;
+}
+
+#hobby_wrapper .hobby {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#hobby_wrapper .hobby {
+  width: 22%;
+  height: 500px;
+  background-color: #d0e6e5;
+  border-radius: 10px;
+  padding: 15px;
+}
+#hobby_wrapper {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  
+}
+
+#hobby_wrapper .hobby .C_Imag{
+  width: 100%;
+  height: 45%;
+  padding: 20px;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+
+#hobby_wrapper .hobby .btn h3 {
+  margin: 0;
+}
+

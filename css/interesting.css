@@ -1,0 +1,25 @@
+#main_block {
+  width: 100%;
+}
+
+#main_block section {
+  width: 96%;
+  margin: 20px auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.pic {
+  height: 200px;
+  width: 200px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.text {
+  padding: 20px;
+}
