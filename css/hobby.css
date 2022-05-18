@@ -55,25 +55,7 @@
   border-radius: 10px;
 }
 
-#add_side_block {
-  width: 25%;
-  padding: 0px 0 450px 30px;
-}
 
-#add_side_block #inner {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: 93%;
-  height: 60%;
-  background-image: url("https://chicagougcc.org/images/sUPPORT_UKR.jpg");
-}
 
 #hobby_wrapper .hobby .btn h3 {
   margin: 0;
