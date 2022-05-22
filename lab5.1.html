@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+		*{
+    margin:0; padding:0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+
+.banner-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.banner-container .banner{
+    background-image: url(back.jpg);
+	background-size:contain;
+    border-radius: 5px;
+    margin:10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    box-shadow: 0 5px 10px #0005;
+    overflow: hidden;
+}
+
+.banner-container .banner .tn{
+    flex:1 1 250px;
+    padding:15px;
+    text-align: center;
+}
+
+.banner-container .banner .tn img{
+    width:100%;
+}
+
+.banner-container .banner .content{
+    flex:1 1 250px;
+    text-align: center;
+    padding:10px;
+    text-transform: uppercase;
+}
+
+.banner-container .banner .content span{
+    color:#eee;
+    font-size: 25px;
+}
+
+.banner-container .banner .content h3{
+    color:#fff;
+    font-size: 40px;
+	animation: pulsate-fwd 0.5s ease-in-out infinite both;
+}
+@keyframes pulsate-fwd {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+
+.banner-container .banner .content p{
+    color:#eee;
+    font-size: 20px;
+    padding:10px 0;
+}
+
+.banner-container .banner .content .tank img{
+    width:50%;
+}
+
+.banner-container .banner .content .btn{
+    display: block;
+    height:40px;
+    width:150px;
+    line-height: 40px;
+    background: #fff;
+    color:#d63031;
+    margin:5px auto;
+    text-decoration: none;
+}
+
+.banner-container .banner .hlop{
+    position: relative;
+    bottom: 55px;
+    padding:15px;
+    flex:1 1 300px;
+	text-align: center;
+	
+}
+
+.banner-container .banner .hlop img{
+    width:60%;
+}
+
+@media (max-width:768px){
+    .banner-container .banner .hlop{
+        display: none;
+    }
+
+
+}
+@media (max-width:650px){
+    .banner-container .banner .tn{
+        display: none;
+    }
+
+
+}
+	</style>
+</head>
+<body>
+	<div class="banner-container">
+
+		<div class="banner">
+			<div class="tn">
+				<img src="taks.png" alt="">
+			</div>
+			<div class="content">
+				<span>ЗНИЖКА</span>
+				<h3>100% </h3>
+				<p>Свіжий завоз з Мордора</p>
+				<a href="#" class="btn">veiw offer</a>
+				<div class="tank">
+					<img src="tank.png" alt="">
+				</div>
+			</div>
+			<div class="hlop">
+				<img src="HapHlop.png" alt="">
+			</div>
+		</div>
+	
+	</div>
+	
+</body>	
+</html>
