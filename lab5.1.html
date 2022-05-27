@@ -1,150 +1,297 @@
 <!DOCTYPE html>
-<html lang="ru">
-
+<html lang="en-US">
 <head>
-	<title>Best Banner</title>
-	<meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<style>
-		*{
-    margin:0; padding:0;
-    box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Loba</title>
+
+
+    <h2>Текстова перевірка:</h2>
+    <input type="text" id="text_chek1">
+    <input type="submit"  id="text_chek2">
+    <br>
+    <span id="text_chek3"></span>
+ 
+
+<script>
+function TxtChk(str) { /*Текстовий рядок, що підлягає перевірці, передається в якості параметра функції*/ /*У циклі перевіряємо всі символи текстового рядка*/
+
+for (var i = 0; i < str.length; i++) {/*Якщо код символу є меншим за 48 або більшим за 57, то символ не є цифрою, оскільки символ “0” має код 48, символ 9 – код “57”, а коди всіх інших цифр розміщені в інтервалі (49;56)*/
+
+   if (str.charCodeAt(i) < 47 || str.charCodeAt(i) > 57)
+
+      return "Це не число";
+
+   /*Якщо хоч один із символів у рядку не є цифрою, то весь текстовий рядок не є представленням натурального числа, а тому повертаємо висновок, що це не число */
+
+   return "Це число"; /*Інакше повертаємо висновок, що у текстовому рядку записане число*/
+
+}
+}
+
+document.getElementById("text_chek2").addEventListener("click", function (event) {
+   event.preventDefault();
+   document.getElementById("text_chek3").innerHTML = TxtChk(document.getElementById("text_chek1").value);
+});
+</script>
+
+
+    <h2>Затирач пробілів:</h2>
+    <input type="text"  id="prob1">
+    <input type="submit"  id="prob2">
+    <br>
+    <span id="prob3"></span>
+ 
+
+ <script>
+    
+    function Prob_po(x) {
+    
+   x =x.trim();
+   return x
 }
 
 
+document.getElementById("prob2").addEventListener("click", function (event) {
+   event.preventDefault();
+   document.getElementById("prob3").innerHTML = Prob_po(document.getElementById("prob1").value);
+});
+ </script>
+  
+    <h2>Перевірка правильності емейлу:</h2>
+    <input type="text"  id="em_check1">
+    <input type="submit"  id="em_check2">
+    <br>
+    <span id="em_check3"></span>
 
-.banner-container{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+ <script>
+     function Check_em(str) /*текстовий рядок, що підлягає перевірці, передаємо як параметр функції*/
 
-.banner-container .banner{
-    background-image: url(back.jpg);
-	background-size:contain;
-    border-radius: 5px;
-    margin:10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    box-shadow: 0 5px 10px #0005;
-    overflow: hidden;
-}
+{
 
-.banner-container .banner .tn{
-    flex:1 1 250px;
-    padding:15px;
-    text-align: center;
-}
+if(str.indexOf("@") == -1) /* Якщо символ “@” відсутній, то текстовий рядок явно не є представленням електронної адреси */
 
-.banner-container .banner .tn img{
-    width:100%;
-}
+     return "E-mail задано неправильно";
 
-.banner-container .banner .content{
-    flex:1 1 250px;
-    text-align: center;
-    padding:10px;
-    text-transform: uppercase;
-}
+if(str.indexOf("@") != str.lastIndexOf("@")) /*Якщо символ “@” зустрічається у текстовому рядку більше, ніж один раз, то текстовий рядок не є електронною адресою*/
 
-.banner-container .banner .content span{
-    color:#eee;
-    font-size: 25px;
-}
+     return "E-mail задано неправильно";
 
-.banner-container .banner .content h3{
-    color:#fff;
-    font-size: 40px;
-	animation: pulsate-fwd 0.5s ease-in-out infinite both;
-}
-@keyframes pulsate-fwd {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.1);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
+if(str.charAt(0) =="@" || str.charAt(str.length) == "@") /*Якщо символ “@” зустрічається на початку або в кінці текстового рядка, то рядок не є електронною адресою*/
 
+     return "E-mail задано неправильно";
 
-.banner-container .banner .content p{
-    color:#eee;
-    font-size: 20px;
-    padding:10px 0;
-}
-
-.banner-container .banner .content .tank img{
-    width:50%;
-}
-
-.banner-container .banner .content .btn{
-    display: block;
-    height:40px;
-    width:150px;
-    line-height: 40px;
-    background: #fff;
-    color:#d63031;
-    margin:5px auto;
-    text-decoration: none;
-}
-
-.banner-container .banner .hlop{
-    position: relative;
-    bottom: 0px;
-    padding:15px;
-    flex:1 1 300px;
-	text-align: center;
-	
-}
-
-.banner-container .banner .hlop img{
-    width:60%;
-}
-
-@media (max-width:868px){
-    .banner-container .banner .hlop{
-        display: none;
-    }
-
+return "Потрібна додаткова перевірка"; /* Оскільки наразі не виявлено, що електронна адреса задана неправильно, то повертаємо значення "Потрібна додаткова перевірка" */
 
 }
-@media (max-width:660px){
-    .banner-container .banner .tn{
-        display: none;
-    }
+document.getElementById("em_check2").addEventListener("click", function (event) {
+   event.preventDefault();
+   document.getElementById("em_check3").innerHTML = Check_em(document.getElementById("em_check1").value);
+});
 
+ </script>
+
+    <h2>Знов число:</h2>
+    <input type="number"  id="num_check1">
+    <input type="submit"  id="num_check2">
+    <br>
+    <span id="num_check3"></span>
+ 
+
+ <script>
+     function checkNm(str) /*текстовий рядок, що підлягає перевірці, передаємо як параметр функції*/
+
+{
+
+if(str.indexOf(".") == 1) /* Якщо символ “@” відсутній, то текстовий рядок явно не є представленням електронної адреси */
+
+     return "Дійсне число";
+
+if(str.indexOf(",") == 1) /* Якщо символ “@” відсутній, то текстовий рядок явно не є представленням електронної адреси */
+
+    return "Дійсне число";
+
+return "Натуральне число"; /* Оскільки наразі не виявлено, що електронна адреса задана неправильно, то повертаємо значення "Потрібна додаткова перевірка" */
 
 }
-	</style>
+document.getElementById("num_check2").addEventListener("click", function (event) {
+   event.preventDefault();
+   document.getElementById("num_check3").innerHTML = checkNm(document.getElementById("num_check1").value);
+});
+ </script>
+
+    <h2>Знов емейл:</h2>
+    <input type="text"  id="email_check2">
+    <input type="submit"  id="email_check_submit2">
+    <br>
+    <span id="email_check_output2"></span>
+
+ <script>
+     function checkEmail2(str) /*текстовий рядок, що підлягає перевірці, передаємо як параметр функції*/
+
+{
+    let a = str.indexOf("@") + 1;
+ 
+if(str.indexOf("@") == -1) /* Якщо символ “@” відсутній, то текстовий рядок явно не є представленням електронної адреси */
+
+     return "E-mail задано неправильно";
+
+if(str.indexOf("@") != str.lastIndexOf("@")) /*Якщо символ “@” зустрічається у текстовому рядку більше, ніж один раз, то текстовий рядок не є електронною адресою*/
+
+     return "E-mail задано неправильно";
+
+if(str.charAt(0) =="@" || str.charAt(str.length) == "@") /*Якщо символ “@” зустрічається на початку або в кінці текстового рядка, то рядок не є електронною адресою*/
+
+     return "E-mail задано неправильно";
+
+if(str.indexOf(".",a) == -1) /* Якщо символ “@” відсутній, то текстовий рядок явно не є представленням електронної адреси */
+
+    return "E-mail задано неправильно";     
+
+return "Потрібна додаткова перевірка" ; /* Оскільки наразі не виявлено, що електронна адреса задана неправильно, то повертаємо значення "Потрібна додаткова перевірка" */
+
+}
+document.getElementById("email_check_submit2").addEventListener("click", function (event) {
+   event.preventDefault();
+   document.getElementById("email_check_output2").innerHTML = checkEmail2(document.getElementById("email_check2").value);
+});
+ </script>
+
+ <h2>Сьогоднішня дата :</h2>
+ <input type = "button" onclick="Now_dat()"value="надіслати">
+
+ <script>  
+     function Now_dat() {
+        let d = new Date();
+    alert("Сьогодні " + d);
+}
+
+    </script>
+
+     <h2>День народження:</h2>
+     <input type = "button" onclick="Dat_bir()" value="надіслати">
+
+     <script>
+
+        function Dat_bir() {
+   let date = new Date(2002,5,29);
+   const week = ["Неділя", "Понеділок", "Вівторок", "Середа", "Четвер", "П'ятнця", "Субота"];
+   let day = week[date.getDay()];
+   alert("День народження: " + date.getFullYear() +  " рік, " + day);
+}
+
+     </script>
+
+   <h2>День народження - 10:</h2>
+   <input type = "button" onclick="SB2(10)" value="надіслати">
+   <h2>День народження - 12:</h2>
+   <input type = "button" onclick="SB2(12)" value="надіслати">
+   <h2>День народження - 25:</h2>
+   <input type = "button" onclick="SB2(25)" value="надіслати">
+   <h2>День народження - 38:</h2>
+   <input type = "button" onclick="SB2(38)" value="надіслати">
+
+   <script>
+
+      function SB2(yyear) {
+ let date = new Date(2022,5,29);
+ date.setFullYear(date.getFullYear() - yyear);
+ const week = ["Неділя", "Понеділок", "Вівторок", "Середа", "Четвер", "П'ятнця", "Субота"];
+ let day = week[date.getDay()];
+ alert("День народження: " + date.getFullYear() +  " рік, " + day);
+}
+
+
+   </script>
+
+   <h2>День народження + 3:</h2>
+   <input type = "button" onclick="SB3()" value="надіслати">
+
+   <script>
+
+      function SB3() {
+ let date = new Date(2022,5,29);
+ date.setFullYear(date.getFullYear() + 3);
+ const week = ["Неділя", "Понеділок", "Вівторок", "Середа", "Четвер", "П'ятнця", "Субота"];
+ let day = week [date.getDay()];
+ alert("День народження: " + date.getFullYear() +  " рік, " + day);
+}
+   </script>
+
+   <h2>Час(год:хв):</h2>
+      <input type="text" id="start_h" >
+      <input type="text"  id="start_m" >
+      <br>
+      <input type="text"  id="end_h" >
+      <input type="text"  id="end_m" >
+      <br>
+      <input type="submit" id="diff_time">
+      <br>
+      <span id="diff_time_output"></span>
+
+   <script>
+
+function diff(start_h, start_m, end_h, end_m) {
+   var startDate = new Date(0, 0, 0, start_h, start_m, 0);
+   var endDate = new Date(0, 0, 0, end_h, end_m, 0);
+   var diff = endDate.getTime() - startDate.getTime();
+   var hours = Math.floor(diff / 1000 / 60 / 60);
+   diff -= hours * 1000 * 60 * 60;
+   var minutes = Math.floor(diff / 1000 / 60);
+
+   return (hours < 9 ? "0" : "") + hours + ":" + (minutes < 9 ? "0" : "") + minutes;
+}
+
+document.getElementById("diff_time").addEventListener("click", function (event) {
+   event.preventDefault();
+   var start_h = document.getElementById("start_h").value;
+   var start_m = document.getElementById("start_m").value;
+   var end_h = document.getElementById("end_h").value;
+   var end_m = document.getElementById("end_m").value;
+   document.getElementById("diff_time_output").innerHTML = "Diff time: " + diff(start_h, start_m, end_h, end_m);
+});
+   </script>
+
+  <h2>Додавання в десятковій:</h2>
+  <input type = "button" onclick="BS(10)" value="надіслати">
+
+  <h2>Додавання в двійковій:</h2>
+  <input type = "button" onclick="BS(2)" value="надіслати">
+
+  <h2>Додавання в шістнадцятковій:</h2>
+  <input type = "button" onclick="BS(16)" value="надіслати">
+
+  <script>
+     function BS(str) {
+   const number = 29 + 5 + 2002
+      alert(number.toString(str));
+   
+}
+  </script>
+ <h2>Калькулятор гіпотенузи:</h2>
+ <input type="text" name="cat1" id="cat1" >
+ <br>
+ <input type="text" name="cat2" id="cat2" >
+ <br>
+ <input type="submit"  id="HypCal2">
+ <br>
+ <span id="HypCal3"></span>
+ <br>
+  <script>
+     function HypCal(cat1, cat2) {
+   let hypot = Math.sqrt(Math.pow((cat1),2) + Math.pow((cat2),2)).toFixed(2);
+   return hypot
+}
+
+
+document.getElementById("HypCal2").addEventListener("click", function (event) {
+   event.preventDefault();
+   cat1 = document.getElementById("cat1").value;
+   cat2 = document.getElementById("cat2").value;
+   document.getElementById("HypCal3").innerHTML = HypCal(cat1, cat2);
+});
+  </script>
 </head>
 <body>
-	<div class="banner-container">
-
-		<div class="banner">
-			<div class="tn">
-				<img src="taks.png" alt="">
-			</div>
-			<div class="content">
-				<span>ЗНИЖКА</span>
-				<h3>100% </h3>
-				<p>Свіжий завоз з Мордора</p>
-				<a href="#" class="btn">veiw offer</a>
-				<div class="tank">
-					<img src="tank.png" alt="">
-				</div>
-			</div>
-			<div class="hlop">
-				<img src="HapHlop.png" alt="">
-			</div>
-		</div>
-	
-	</div>
-	
-</body>	
+</body>
 </html>
