@@ -85,9 +85,9 @@
 .banner-container .banner .content h3{
     color:#fff;
     font-size: 40px;
-	animation: pulsate-fwd 0.5s ease-in-out infinite both;
+	animation: PL 0.5s ease-in-out infinite both;
 }
-@keyframes pulsate-fwd {
+@keyframes PL {
   0% {
     transform: scale(1);
   }
@@ -104,13 +104,26 @@
     color:#eee;
     font-size: 20px;
     padding:10px 0;
+    animation: TIE 0.7s  both;
+}
+@keyframes TIE {
+  0% {
+    letter-spacing: -0.5em;
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .banner-container .banner .content .tank img{
     width:50%;
-    animation: vibrate-1 1.5s ease-in-out infinite both;
+    animation: ride 1.5s ease-in-out infinite both;
 }
-@keyframes vibrate-1 {
+@keyframes ride {
   
   100% {
     opacity: 1;
@@ -141,9 +154,9 @@
 .banner-container .banner .hlop img{
     width:60%;
 
-    animation: bounce-in-top 1.1s both;
+    animation: bonce 1.1s both;
 }
-@keyframes bounce-in-top {
+@keyframes bonce {
   0% {
     transform: translateY(-500px);
     animation-timing-function: ease-in;
