@@ -28,7 +28,41 @@
 </head>
 
 <body>
+	
+	<style>
+		body{
+			margin: 0px;
+			font-family:'Times New Roman', Times, serif;
+		}
+		#context-menu{
+		position:fixed;
+		z-index:10000;
+		width: 150px;
+		background: #1b1a1a;	
+		transform: scale(0);
+		transform-origin: top left;
+		}
+		#context-menu.active{
+			transform: scale(1);
+			transition:transform 200ms ease-in-out;
+		}
+		#context-menu .item{
+			padding:8px 10px;
+			font-size: 15px;
+			color: #560;
+		}
+		#context-menu .item:hover{
+			background: #555;
+		}
+		#context-menu .item i{
+			display:inline-block;
 
+		}
+		#context-menu hr{
+			margin: 2px 0px;
+			border-color: #555;
+		}
+	</style>
 
 	<main>
 
@@ -45,21 +79,28 @@
 					<div id="group_photos">
 
 						<div class="group_photo">
-							<img src="https://t4.ftcdn.net/jpg/00/53/75/13/360_F_53751333_deNQTF6uK81Rd4qN71X7nandoMRswWrQ.jpg" alt="">
+							<img src="https://t4.ftcdn.net/jpg/00/53/75/13/360_F_53751333_deNQTF6uK81Rd4qN71X7nandoMRswWrQ.jpg" alt=""
+							onmouseover="this.src= 'https://gagadget.com/media/post_big/AnonymousUkraine.jpeg'"
+								onmouseout="this.src='https://t4.ftcdn.net/jpg/00/53/75/13/360_F_53751333_deNQTF6uK81Rd4qN71X7nandoMRswWrQ.jpg'">
+						
 						</div>
 
 						<div class="group_photo">
-							<img src="https://img.freepik.com/free-vector/zoo-animals-in-the-wild-nature-background_1308-44948.jpg?w=2000" alt="">
+							<img src="https://img.freepik.com/free-vector/zoo-animals-in-the-wild-nature-background_1308-44948.jpg?w=2000" alt=""
+							onmouseover="this.src= 'https://life.fakty.com.ua/wp-content/uploads/sites/3/2022/03/22/anonymus-hakery.jpg'"
+								onmouseout="this.src='https://img.freepik.com/free-vector/zoo-animals-in-the-wild-nature-background_1308-44948.jpg?w=2000'">
 						</div>
 
 						<div class="group_photo">
-							<img src="https://media.istockphoto.com/photos/business-team-holding-question-mark-signs-in-office-picture-id1192501280?k=20&m=1192501280&s=612x612&w=0&h=-mXeMyPuSAlJ6GIjw58mWYAK6LoIe8uTelhTpjlN_9E=" alt="">
+							<img src="https://media.istockphoto.com/photos/business-team-holding-question-mark-signs-in-office-picture-id1192501280?k=20&m=1192501280&s=612x612&w=0&h=-mXeMyPuSAlJ6GIjw58mWYAK6LoIe8uTelhTpjlN_9E=" alt=""
+							onmouseover="this.src= 'https://itc.ua/wp-content/uploads/2022/04/fqarsyqwuam3-yb.jpg'"
+							onmouseout="this.src='https://media.istockphoto.com/photos/business-team-holding-question-mark-signs-in-office-picture-id1192501280?k=20&m=1192501280&s=612x612&w=0&h=-mXeMyPuSAlJ6GIjw58mWYAK6LoIe8uTelhTpjlN_9E='">
 						</div>
 
 						
 
 					</div>
-
+					
 					<div id="group_text">
 						<pre>
 					    Файна група, не жаліюсь. А учасники групи СІ-31, можуть самі про себе розповісти. 
@@ -87,6 +128,11 @@
 									студентське покоління молоде!
 
 						</pre>
+						<div id="input-block">
+							<pre>Input check:</pre>
+							<input type="text" 
+								onkeypress="return checkSymbol(event.keyCode);">
+						</div>
 					</div>
 					
 
@@ -113,6 +159,7 @@
 					
 		
 				</div>
+				
 			</div>
 
 		</div>
@@ -120,7 +167,94 @@
 	</main>
 
 	</div>
+			<div id="context-menu">
+				<div class="item" onclick="doAction('close');">
+					<i class="fa fa-times "></i> Close
+				</div>
+				<div class="item" onclick="doAction('copy');">
+					<i class="fa fa-clone "></i> Copy
+				</div>
+				<div class="item" onclick="doAction('fontIncrease');">
+					<i class="fa fa-search-plus "></i> Font increase
+				</div>
+				<div class="item" onclick="doAction('fontDecrease');">
+					<i class="fa fa-search-minus "></i> Font increase
+				</div>
+				<div class="item" onclick="doAction('changeBg');">
+					<i class="fa fa-paint-brush "></i> Change background
+				</div>
+			
+			</div>
+			
+		<script>
+			function checkSymbol(kc) /* Передаємо функції код натиснутої клавіші */ {/* Символ “0” має код 48, символ “9” – код 57. Коди всіх десяткових цифр попадають у діапазон від 48 до 57. Якщо kc не попадає в зазначений діапазон, то kc не є кодом цифри, а тому функція повертає значення false. */
 
+						if (kc < 48 || kc > 57)
+
+						return false;
+
+						return true;
+
+}
+
+			window.addEventListener("contextmenu",function(event){
+				event.preventDefault();
+				var contextElement = document.getElementById("context-menu");
+				contextElement.style.top = event.offsetY + "px";
+				contextElement.style.left = event.offsetX + "px";
+				contextElement.classList.add("active");
+			});
+			window.addEventListener("click",function(event){
+				document.getElementById("context-menu").classList.remove("active");
+
+			})
+
+			function doAction(actionType) {
+
+				switch (actionType) {
+
+					case "copy":
+						break;
+
+					case "close":
+							window.close();
+						break;
+
+					case "fontIncrease":
+						document.body.style.fontSize= "15px";
+						break;
+
+					case "fontDecrease":
+					document.body.style.fontSize= "10px";
+						break;
+
+					case "changeBg":
+					var a = Math.floor(Math.random() * 6);
+						if (a == 0)
+							document.body.style.backgroundImage = "url('https://img.freepik.com/free-vector/hand-painted-watercolor-pastel-sky-cloud-background_41066-1919.jpg?w=2000')";
+							
+						if (a == 1)
+						document.body.style.backgroundImage = "url('https://img.freepik.com/free-vector/hand-painted-watercolor-pastel-sky-cloud-background_41066-1919.jpg?w=2000')";
+							
+						if (a == 2)
+						document.body.style.backgroundImage = "url('https://www.komar.de/ru/media/catalog/product/cache/7/image/9df78eab33525d08d6e5fb8d27136e95/p/6/p6027a-vd3_clouds_ma.jpg')";
+
+						if (a == 3)
+						document.body.style.backgroundImage = "url('https://images.wallpaperscraft.com/image/single/clouds_sky_moon_131398_2780x2780.jpg')";	
+
+						if (a == 4)
+						document.body.style.backgroundImage = "url('https://images.wallpaperscraft.com/image/single/clouds_sky_porous_138133_2780x2780.jpg')";
+
+						if (a == 5)
+						document.body.style.backgroundImage = "url('https://cdn.wallpapersafari.com/71/28/aKtEvW.jpg')";
+						
+						break;
+
+				}
+
+			}
+	
+		</script>
 	
 </body>
 
