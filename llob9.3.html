@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Loba</title>
+</head>
+<body onload="assignFunctionToCheckboxes();">
+   <h2>Check form</h2>
+
+   <form action="">
+
+     <input type="checkbox" name="test" onchange="getTotalPrice();" > 1 <br>
+     <input type="checkbox" name="test"onchange="getTotalPrice();" > 2 <br>
+     <input type="checkbox" name="test" onchange="getTotalPrice();"> 3 <br>
+     <input type="checkbox" name="test" onchange="getTotalPrice();"> 4 <br>
+     <input type="checkbox" name="test" onchange="getTotalPrice();"> 5 <br>
+     <input type="checkbox" name="test" onchange="getTotalPrice();"> 6 <br>
+     <input type="checkbox" name="test" onchange="getTotalPrice();"> 7 <br>
+     <input type="checkbox" name="test" onchange="getTotalPrice();"> 8 <br>
+     <input type="checkbox" name="test" onchange="getTotalPrice();"> 9 <br>
+     <input type="checkbox" name="test" onchange="getTotalPrice();"> 10 <br>
+
+   <span id="text"></span>
+
+   </form>
+   <script>
+
+
+/* Функція getTotalPrice() призначена власне для обчислення сумарної вартості вибраних товарів */
+
+function getTotalPrice() {
+    let boxes = document.getElementsByName('test');
+    let price = document.getElementById('text');
+    let  checkedSum = 0;
+    boxes.forEach((boxes) => {
+        if (boxes.checked) checkedSum += 1;
+    });
+
+    if (checkedSum < 5) {
+        price.innerText = "Вибрано замало прапорців!!!";
+        price.style.color = "red";
+    }
+    else {
+        price.innerText = "Прально ";
+        price.style.color = "green";
+    }
+}
+
+</script>
+</body>
+</html>

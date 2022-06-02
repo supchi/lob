@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Loba</title>
+</head>
+<body onload="assignFunctionToCheckboxes();">
+   <select onchange="showStreets(this.selectedIndex,'streets');">
+
+      <option>Виберіть район</option>
+
+      <option>Показати всі</option>
+      
+      <option>Галицький</option>
+      
+      <option>Франківський</option>
+      
+      <option>Личаківський</option>
+      
+      <option>Сихівський</option>
+      
+      <option>Шевченківський</option>
+      
+      </option>
+      
+      <select>
+      
+      Вулиці:
+      
+      <select id='streets' style='visibility:hidden;'>    
+      
+      <option></option>
+      
+      <select>
+   <script>
+
+/* Для вирішення нашої задачі зручно застосувати масиви. Опишемо 5 масивів, кожен з яких містить назви вулиць одного конкретного району міста Львова: */
+
+var streetsAa = new Array('Галицька','Ставропігійська','Краківська','Театральна','Вірменська','Чорновола','Остряниці','Замарстинівська','Топольна','Варшавська','Сахарова','Наукова','Княгині Ольги','В.Великого','Личаківська','Пекарська','Нечуя-Левицького','Зелена','Хоткевича','Червоної Калини');
+
+var streetsGal = new Array('Галицька','Ставропігійська','Краківська','Театральна','Вірменська');
+
+var streetsShev = new Array('Чорновола','Остряниці','Замарстинівська','Топольна','Варшавська');
+
+var streetsFran = new Array('Сахарова','Наукова','Княгині Ольги','В.Великого');
+
+var streetsLych = new Array('Личаківська','Пекарська','Нечуя-Левицького','Зелена');
+
+var streetsSykh = new Array('Хоткевича','Червоної Калини');
+
+/* Оголосимо масив streetsAll з 6 елементів. Першим елементом зробимо значення null, наступні 5 елементів будуть вже оголошеними масивами streetsGal,streetsFran,streetsLych,streetsSykh та streetsShev. Кількість та послідовність елементів масиву streetsAll повинна відповідати кількості та послідовності елементів списку районів. Елементу "Виберіть район" списку районів відповідає значення null, елементу "Галицький" – масив streetsGal, що описує вулиці Галицького району, елементу streetsFran – масив streetsFran, що перелічує вулиці Франківського району і т.д. Масив streetsAll сформований так, щоб можна було написати лаконічний, мінімізований код функції showStreets */
+
+var streetsAll = new Array(null,streetsAa,streetsGal,streetsFran,streetsLych,streetsSykh,streetsShev);
+
+ 
+
+function showStreets(regionIndex,selectId) {
+
+if (regionIndex <= 0) /* Якщо зі списку районів не вибрано жоден елемент або ж виділений елемент "Виберіть район", то список вулиць приховуємо (присвоюючи властивості visibility значення 'hidden') і припиняємо роботу функції (за допомогою оператора return). Якщо ж у списку районів вибрано назву району, то виконання функції продовжується */
+
+{
+
+streetsSelect.style.visibility = 'hidden';
+
+return false;
+
+}
+
+/* Змінна streetsSelect вказуватиме на список вулиць, до якого звертаємося за значенням атрибута id: */
+
+var streetsSelect = document.getElementById(selectId);
+
+clearSelect(streetsSelect); /* викликаємо допоміжну функцію clearSelect, яку нам ще належить описати. Функція clearSelect здійснює "очищення" списку від елементів. Вона приймає один параметр – об'єкт (а точніше, саме список), з якого слід видалити елементи */
+
+streetsSelect.style.visibility = 'visible'; /* робимо список вулиць видимим */
+
+/* І зрештою, найголовніше – "населення" списку вулиць новими елементами. Ось для чого нам знадобиться масив streetsAll. Оскільки індекс вибраного району співпадає з індексом елемента масиву streetsAll, який описує вулиці цього району, то до відповідного масиву вулиць можна звернутися так: streetsAll[regionIndex]. У циклі "перебираємо" всі вулиці вибраного району */
+
+for(var i = 0; i < streetsAll[regionIndex].length; i++)
+
+{/* створюємо новий елемент списку, текст і значення value якого рівний streetsAll[regionIndex])[i] (тобто, i-ій вулиці з масиву потрібних вулиць) */
+
+var newStreet = new Option((streetsAll[regionIndex])[i],(streetsAll[regionIndex])[i]);
+
+streetsSelect.add(newStreet,i); /* на i-ту позицію списку вулиць додаємо новостворений елемент */
+
+}
+
+}
+function clearSelect(selectObject){
+
+while(selectObject.length) /* Поки у списку ще є елементи, видаляємо елемент списку з індексом 0. Зауважте, що для запису умови циклу while тут використано наступну властивість мови JavaScript: ціле число інтерпретується як false, якщо воно нульове, і як true у протилежному випадку. Поки властивість length не рівна 0, цикл виконуватиметься */
+
+selectObject.remove(0);
+
+}
+var streetsAll = new Array(null,streetsAa.sort(),streetsGal.sort(),streetsFran.sort(),streetsLych.sort(),streetsSykh.sort(),streetsShev.sort());
+
+</script>
+</body>
+</html>

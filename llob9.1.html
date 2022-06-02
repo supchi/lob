@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Loba</title>
+</head>
+<body onload="assignFunctionToCheckboxes();">
+  
+
+<select onchange="showStreets(this.selectedIndex);">
+
+
+<option>Кнопка-1</option>
+
+<option>Кнопка-2</option>
+
+<option>Кнопка-3</option>
+
+<option>Кнопка-4</option>
+
+<option>Кнопка-5</option>
+
+<option>Кнопка-6</option>
+
+<option>Кнопка-7</option>
+
+<option>Кнопка-8</option>
+
+<option>Кнопка-9</option>
+
+<option>Кнопка-10</option>
+
+</option>
+
+<select>
+   <input id="s_btn"  type="submit" value="кнопочка" disabled>
+
+   <script>
+
+      function showStreets(regionIndex) {
+      
+         if (regionIndex == 0) {
+      document.getElementById("s_btn").disabled = true;
+      document.getElementById("s_btn").value = "Вимкнуто";
+   } else {
+      document.getElementById("s_btn").disabled = false;
+      document.getElementById("s_btn").value = "Ввімкнено";
+   }
+     
+   
+      }
+      
+
+</script>
+</body>
+</html>
