@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Loba</title>
+</head>
+
+<body onload="checker()">
+   <form action="" id="f1">
+   <h2>Приклад 1 і 5:</h2>
+   <input type="text" id="UN" onkeypress="checkFields()">
+   <input type="password" id="pwd" onkeypress="checkFields()">
+   <input type="submit" id="send" onclick="formSubmit()" disabled>
+      <br><br>
+      <h2>Приклад 2 і 4:</h2>
+      <select id="city" onchange="handleSelect()">
+
+         <option>Виберіть місто</option>
+         
+         <option>Львів</option>
+         
+         <option>Київ</option>
+         
+         <option>Одеса</option>
+         
+         <option>Харків</option>
+         
+         </select>   
+         <input type="submit" id="sendi" disabled>
+         <input type="submit" id="sendion" value="Видалити" onclick="deleteItem()">
+         <br><br>
+      </form>
+      <h2>Приклад 3:</h2>
+      <input type="text" id="newElement">
+      <input type="submit" id="sendio" onclick="addToList()">
+   
+   <br><br><br>
+
+   <h2>Пароль:</h2>
+   <input type="password" id="pswd">
+   <input type="button" id="pswd-change" value = "Надіслати" onclick="changePswdInput()">
+   <style>
+      table,th,td {
+         border: 1px solid;
+      }
+      td{
+         width: 200px;
+         background-color:aquamarine;
+      
+      }
+   </style>
+ <br><br><br>
+   <table>
+      <tr id="row1">
+         <td>[1,1]Текст-Текст-Текст-Текст-Текст-Текст-Текст-Текст-Текст-Текст-</td>
+         <td>[1,2]Текст-Текст-Текст-Текст-Текст-Текст-Текст-Текст-Текст-Текст-</td>
+      </tr>
+      <tr id="row2">
+         <td>[2,1]Текст-Текст-Текст-Текст-Текст-Текст-Текст-Текст-Текст-Текст-</td>
+         <td>[2,2]Текст-Текст-Текст-Текст-Текст-Текст-Текст-Текст-Текст-Текст-</td>
+      </tr>
+      <tr id="row3">
+         <td>[3,1]Текст-Текст-Текст-Текст-Текст-Текст-Текст-Текст-Текст-Текст-</td>
+         <td>[3,2]Текст-Текст-Текст-Текст-Текст-Текст-Текст-Текст-Текст-Текст-</td>
+      </tr>
+   </table>
+   <br>
+   <input type="button" id="hide-rows" value = "Надіслати" onclick="hideRows()">
+   <br><br><br>
+ <script>
+    function checkFields()
+
+{
+
+if(document.getElementById("UN").value=="" || document.getElementById("pwd").value == "")
+
+document.getElementById("send").disabled = true;
+
+else
+
+document.getElementById("send").disabled = false;
+
+}
+function handleSelect()
+
+{
+
+var sel = document.getElementById("city");
+
+if(sel.selectedIndex == 0 || sel.selectedIndex == -1)
+
+document.getElementById("sendi").disabled = true;
+
+else
+
+document.getElementById("sendi").disabled = false;
+
+}
+function addToList()
+
+{
+
+if(document.getElementById("newElement").value!="") /*Якщо вміст текстового поля не пустий*/
+
+{
+
+var sel = document.getElementById("city");
+
+var newItem = new Option();/*Оголошення нового об’єкта типу «Елемент списку»*/
+
+newItem.text=document.getElementById("newElement").value; /*У властивість text нового елемента списку записуємо вміст текстового поля*/
+
+newItem.value=sel.options.length-1; /*У властивість value нового елемента списку записуємо його майбутній порядковий номер у списку */
+
+sel.add(newItem, sel.length); /*До списку додаємо визначений елемент на останню позицію */
+
+}
+
+}
+function deleteItem()
+
+{
+
+var sel = document.getElementById("city"); /* у змінну sel запишемо посилання на випадаючий список */
+
+sel.remove(sel.selectedIndex); /* Видаляємо елемент, що є вибраним у списку на даний момент */
+
+sel.selectedIndex = 0; /* Робимо вибраним елемент з індексом 0*/
+
+}
+function formSubmit()
+
+{
+
+if(document.getElementById("UN").value !="" && document.getElementById("pwd").value != "")
+
+document.getElementById("f1").submit();
+
+}
+function changePswdInput(){
+   document.getElementById("pswd").style = "background-color:red; color:white; height:28px;font-size:10pt;"
+}
+
+function hideRows(){
+   document.getElementById("row1").style = "display: none;"
+   document.getElementById("row3").style = "visibility: hidden;"
+}
+
+ </script>
+</html>
