@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Loba</title>
+</head>
+
+<body onload="checker()">
+   <h2>Бланк вводу:</h2>
+   <form action="" id="f1">
+      <input type="text" id="username" placeholder="Логін" onkeyup="checker()">
+      <br><br>
+
+      <input type="password" placeholder="Пароль" id="password" onkeyup="checker()">
+      <br><br>
+      <input type="password" placeholder="Підтвердьте пароль" id="confirm_password" onkeyup="checker()">
+      <br><br>
+
+      <select id="city" onchange="checker()">
+         <option>Виберіть місто</option>
+         <option>Львів</option>
+         <option>Київ</option>
+         <option>Одеса</option>
+         <option>Харків</option>
+      </select>
+
+      <input type="submit" id="send" disabled>
+   </form>
+   <br><br><br>
+   <h2>Приклад 1:</h2>
+   <input type="text" id="phone" placeholder="Телефон">
+   <button type="button" id="phone-check">Надіслати</button>
+   <br><br>
+   <h2>Приклад 2:</h2>
+   <input type="text" id="sphone" placeholder="стаціонарний">
+   <button type="button" id="sphone-check">Надіслати</button>
+   <br><br>
+   <h2>Приклад 3:</h2>
+   <input type="text" placeholder="затирач пробілів" onblur="this.value=removeRedundantSpaces(this.value);">
+   <br><br>
+   <h2>Приклад 4:</h2>
+   <textarea rows="20" cols="20" id="editor">
+
+      <html>
+      
+      <i>some text<i>
+      
+      <b>some text</i>
+      
+      <br>
+      
+      <br>
+      
+      <br>
+      
+      </html>
+      
+   </textarea>
+   <input type="button" value="Надіслати" onclick="clearTextFromHTMLTags(document.getElementById('editor').value);">
+   <br><br><br>
+   <h2>Приклад 5:</h2>
+   <input type="text" id="num" placeholder="Числа">
+   <button type="button" onclick="checkWholePositiveNumber(document.getElementById('num').value)">Надіслати</button>
+   <br><br><br>
+   <h2>Перевірка номеру:</h2>
+   <input type="text" id="phone">
+   <button type="button" onclick="checkPhone();">Надіслати</button>
+   <br>
+   <span id="inform"></span>
+   <br><br><br>
+   <h2>Поштовий індекс:</h2>
+   <input type="text" id="post_index">
+   <button type="button" onclick="checkPostIndex();">Надіслати</button>
+   <br>
+   <span id="inform2"></span>
+   <br><br><br>
+   <h2>Тестер міського телефона Львова:</h2>
+   <input type="text" id="lphone">
+   <button type="button" onclick="checkLandLinePhone();">Надіслати</button>
+   <br>
+   <span id="inform3"></span>
+   <br><br><br>
+   <h2>Очищувач коментарів:</h2>
+   <textarea rows="9" cols="35" id="editor1">
+   <!--Коментар один тут-->   
+   <p>Some text</p>
+   <font></font>
+   <!--Коментар другий тут--> 
+   <br>
+   <hr>
+   not a tag
+   <!--а третій Коментар аж тут--> 
+   </textarea>
+   <br>
+   <input type="button" value="Надіслати" onclick="clearComments();">
+   <br><br><br>
+   <h2>Очищувач тегів:</h2>
+   <textarea rows="7" cols="20" id="editor2">
+   <p>Some text</p>
+   <font></font>
+   <br>
+   <hr>
+   not a tag
+   </textarea>
+   <br>
+   <input type="button" value="Надіслати" onclick="clearTags();">
+   <br><br><br>
+   <h2>Стирач пробілів:</h2>
+   <input type="text" id="spaces_filled" onblur="this.value=removeSpaces(this.value);">
+   <button type="button" >Надіслати</button>
+   <br>
+   <span id="inform4"></span>
+   <br><br><br>
+   <h2>Тестер року:</h2>
+   <input type="text" id="year">
+   <button type="button" onclick="checkYear();">Надіслати</button>
+   <br>
+   <span id="inform5"></span>
+   
+   <br><br><br>
+ <script>
+    function checker() {
+   if (document.getElementById('password').value ===
+      document.getElementById('confirm_password').value) {
+
+      document.getElementById('confirm_password').setCustomValidity('')
+   } else {
+      document.getElementById('confirm_password').setCustomValidity('Passwords do not match!')
+   }
+
+   var sel = document.getElementById("city");
+   if (document.getElementById("username").value == "" || document.getElementById("password").value == "" || document.getElementById("confirm_password").value == "" || sel.selectedIndex == 0 || sel.selectedIndex == -1)
+      document.getElementById("send").disabled = true;
+   else
+      document.getElementById("send").disabled = false;
+}
+function testCellPhoneNumber(str) {
+
+if(!str.length)
+
+alert("Номер мобільного телефону задано некоректно");
+
+var cellPhoneTemplate = new RegExp("8?((063)|(093))[0-9]{7}");
+
+str = str.replace(cellPhoneTemplate,"");
+
+if(str != "")
+
+alert("Номер мобільного телефону задано некоректно");
+
+else
+alert("Файно")
+
+}
+document.getElementById("phone-check").addEventListener("click", function (event) {
+   event.preventDefault()
+   testCellPhoneNumber(document.getElementById("phone").value)
+});
+function testPhoneNumber(str) {
+
+if (!str.length)
+   alert("Номер телефону задано некоректно");
+
+var phoneTemplate = new RegExp("2?[0-9]{6}");
+
+str = str.replace(phoneTemplate, "");
+
+if (str != "")
+   alert("Номер телефону задано некоректно");
+else
+   alert("Файно");
+}
+
+
+
+document.getElementById("sphone-check").addEventListener("click", function (event) {
+event.preventDefault()
+testPhoneNumber(document.getElementById("sphone").value)
+});
+
+function removeRedundantSpaces(text_for_Editing) {
+
+var extraSpaces = new RegExp("[ ]{2,}", "g");
+
+return text_for_Editing.replace(extraSpaces, " ");
+
+}
+
+function clearTextFromHTMLTags(textForEditing) {
+
+var tagTemplate = new RegExp("</?[a-zA-Z]{1,}/?>", "g");
+
+
+textForEditing = textForEditing.replace(tagTemplate, "");
+
+document.getElementById('editor').value = textForEditing
+}
+function clearTextFromHTMLTags(textForEditing) {
+   var tagTemplate = new RegExp("</?[a-zA-Z]{1,}/?>", "g");
+   textForEditing = textForEditing.replace(tagTemplate, "");
+   document.getElementById('editor').value = textForEditing
+}
+function checkWholePositiveNumber(str) {
+   if (!str.length) 
+      return alert("This is not valid whole positive number!");
+   var re = new RegExp("[^0-9]", "g");
+   str = str.replace(re, "a");
+   if (str.indexOf("a") != -1) 
+      alert("This is not valid whole positive number!"); 
+   else
+      alert("Файно")
+}
+function checkPhone() {
+   var inpt = document.getElementById("phone")
+   var str = inpt.value
+   var inform = document.getElementById("inform")
+
+   if (!str.length) {
+      
+      inform.innerHTML = "Файно"
+   } else {
+      var phoneTemplate = new RegExp("^[+]?380|[(]380[)])?[\s]?[0-9]{9}$");
+
+      str = str.replace(phoneTemplate, "");
+
+      if (str != "") {
+         inform.innerHTML = "Неправильний номер!";
+         
+      } else {
+         inform.innerHTML = "Файно";
+      }
+   }
+}
+function checkPostIndex() {
+   var inpt = document.getElementById("post_index")
+   var str = inpt.value
+   var inform = document.getElementById("inform2")
+
+   if (!str.length) {
+      inform.innerHTML = "Введи число!"
+   } else {
+      var phoneTemplate = new RegExp("^790[0-9]{2}$$");
+
+      str = str.replace(phoneTemplate, "");
+
+      if (str != "") {
+         inform.innerHTML = "Не той поштовий!";
+      } else {
+         inform.innerHTML = "Файно";
+      }
+   }
+}
+function checkLandLinePhone() {
+   var inpt = document.getElementById("lphone")
+   var str = inpt.value
+   var inform = document.getElementById("inform3")
+   if (!str.length) {
+     
+      inform.innerHTML = "Введи число!"
+      
+   } else {
+      var phoneTemplate = new RegExp("^([0-9]{7}|[(]032[)][0-9]{7}|[0-9]{3}-[0-9]{2}-[0-9]{2})$");
+      str = str.replace(phoneTemplate, "");
+      if (str != "") {
+         inform.innerHTML = "Не вірний номер!";
+      } else {
+         inform.innerHTML = "Файно";
+      }
+   }
+}
+
+function clearComments() {
+   var txt = document.getElementById('editor1').value
+   var tagTemplate = new RegExp("<!--.*?-->", "g");
+   var textForEditing = txt.replace(tagTemplate, "");
+   document.getElementById('editor1').value = textForEditing
+}
+
+function clearTags() {
+   var txt = document.getElementById('editor2').value
+   var tagTemplate = new RegExp("(<br>)|(<hr>)|(<p>.*?</p>)|(<font>.*?</font>)", "g");
+   var textForEditing = txt.replace(tagTemplate, "");
+   document.getElementById('editor2').value = textForEditing
+}
+function removeSpaces(text_for_Editing1) {
+   var inform = document.getElementById("inform4")
+   var txt = document.getElementById('spaces_filled').value.trim()
+   return text_for_Editing1.replace(text_for_Editing1,txt);
+}
+
+function checkYear() {
+   var inform = document.getElementById("inform5")
+   var year = document.getElementById("year").value
+   var regex = /^[0-9]+$/;
+
+   if (year.length === 4) {
+      if (isNaN(year)) {
+         inform.innerHTML = "Тільки числа"
+      } else {
+         if ((year < 1920) || (year > 2099)) {
+            inform.innerHTML = "Рік повинен бути в межах 1990-2066 років!"
+         } else {
+            inform.innerHTML = "Файно"
+         }
+      }
+
+   } else {
+      inform.innerHTML = "Треба 4 числа!"
+   }
+}
+ </script>
+</html>
